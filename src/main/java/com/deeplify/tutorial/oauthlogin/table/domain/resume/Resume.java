@@ -1,6 +1,6 @@
 package com.deeplify.tutorial.oauthlogin.table.domain.resume;
 
-import com.deeplify.tutorial.oauthlogin.table.domain.user.UserResume;
+import com.deeplify.tutorial.oauthlogin.table.domain.user.User;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -16,9 +16,9 @@ public class Resume {
     @Column(name = "re_id")
     private Long re_id;
 
-    @ManyToOne(cascade = CascadeType.PERSIST)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
     @JoinColumn(name = "re_user_us_id")
-    private UserResume userResume;
+    private User user;
 
     @Column(name = "re_title")
     private String re_title;

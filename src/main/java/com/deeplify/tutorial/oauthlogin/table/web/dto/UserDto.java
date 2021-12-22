@@ -1,10 +1,10 @@
-package com.deeplify.tutorial.oauthlogin.table.domain.controller;
+package com.deeplify.tutorial.oauthlogin.table.web.dto;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
-public class UserForm {
+public class UserDto {
 
     private String name;
 

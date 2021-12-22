@@ -1,7 +1,8 @@
-package com.deeplify.tutorial.oauthlogin.table.domain.controller;
+package com.deeplify.tutorial.oauthlogin.table.web.controller;
 
-import com.deeplify.tutorial.oauthlogin.table.domain.user.UserResume;
+import com.deeplify.tutorial.oauthlogin.table.domain.user.User;
 import com.deeplify.tutorial.oauthlogin.table.service.UserResumeService;
+import com.deeplify.tutorial.oauthlogin.table.web.dto.UserDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,18 +20,18 @@ public class UserResumeController {
 
     @GetMapping("/users/new")
     public String createUser(Model model){
-        model.addAttribute("userForm",new UserForm());
+        model.addAttribute("userForm",new UserDto());
         return "users/createUserForm";
     }
 
     @PostMapping("/users/new")
-    public String create(@Valid UserForm form, BindingResult result) {
+    public String create(@Valid UserDto form, BindingResult result) {
 
         if (result.hasErrors()) {
             return "users/createUserForm";
         }
 
-        UserResume userResume = new UserResume();
+        User userResume = new User();
         userResume.setUs_name(form.getName());
         userResume.setUs_email(form.getEmail());
 

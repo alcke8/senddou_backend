@@ -15,7 +15,7 @@ public class IntroduceDetail {
     @Column(name = "id_id")
     private Long id_id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "rc_id")
     private ResumeContent resumeContent;
     private String id_title;
