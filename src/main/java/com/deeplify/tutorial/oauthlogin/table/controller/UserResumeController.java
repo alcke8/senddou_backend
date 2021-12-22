@@ -1,4 +1,4 @@
-package com.deeplify.tutorial.oauthlogin.table.web.controller;
+package com.deeplify.tutorial.oauthlogin.table.controller;
 
 import com.deeplify.tutorial.oauthlogin.table.domain.user.User;
 import com.deeplify.tutorial.oauthlogin.table.service.UserResumeService;

@@ -94,7 +94,7 @@ spring:
         kakao:
           authorizationUri: https://kauth.kakao.com/oauth/authorize
           tokenUri: https://kauth.kakao.com/oauth/token
-          userInfoUri: https://kapi.kakao.com/v2/user/me
+          userInfoUri: https://kapi.kakao.com/v2/userResume/me
           userNameAttribute: id
 
 # cors 설정
