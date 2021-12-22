@@ -1,5 +1,6 @@
-package com.deeplify.tutorial.oauthlogin.table.domain.resumecontent;
+package com.deeplify.tutorial.oauthlogin.table.domain.resume;
 
+import com.deeplify.tutorial.oauthlogin.table.domain.resumecontent.ResumeContent;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,8 +19,8 @@ public class ResumeComponent {
     private String rp_type;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "rc_id")
-    private ResumeContent resumeContent;
+    @JoinColumn(name = "rp_fk_id")
+    private Resume resume;
 
     private String rp_name;
     private int rp_x;

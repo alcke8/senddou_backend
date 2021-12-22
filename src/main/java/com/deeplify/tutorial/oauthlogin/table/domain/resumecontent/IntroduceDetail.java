@@ -15,9 +15,9 @@ public class IntroduceDetail {
     @Column(name = "id_id")
     private Long id_id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "rc_id")
-    private ResumeContent resumeContent;
+    private ContentIntroduce contentIntroduce;
     private String id_title;
     private String id_content;
     private LocalDateTime id_created_at;
