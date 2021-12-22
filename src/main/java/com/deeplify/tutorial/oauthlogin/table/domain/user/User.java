@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Getter @Setter
-public class UserResume {
+public class User {
 
     @Id @GeneratedValue
     @Column(name = "us_id")

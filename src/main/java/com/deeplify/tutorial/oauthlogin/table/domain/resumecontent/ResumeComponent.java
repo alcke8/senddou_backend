@@ -17,7 +17,7 @@ public class ResumeComponent {
 
     private String rp_type;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "rc_id")
     private ResumeContent resumeContent;
 

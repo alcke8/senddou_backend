@@ -1,6 +1,6 @@
 package com.deeplify.tutorial.oauthlogin.table.domain.resumecontent;
 
-import com.deeplify.tutorial.oauthlogin.table.domain.user.UserResume;
+import com.deeplify.tutorial.oauthlogin.table.domain.user.User;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,9 +18,9 @@ public class ResumeContent {
 
     private String rc_company;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "rc_user_us_id")
-    private UserResume userResume;
+    private User user;
 
     private String rc_title;
     private LocalDateTime rc_created_at;

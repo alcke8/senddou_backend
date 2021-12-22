@@ -17,7 +17,7 @@ public class ContentIntroduce {
 
     private String ci_title;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "rc_id")
     private ResumeContent resumeContent;
 
