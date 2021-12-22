@@ -18,7 +18,7 @@ public class ContentIntroduce {
     private String ci_title;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "rc_id")
+    @JoinColumn(name = "ci_content_rc_id")
     private ResumeContent resumeContent;
 
     private LocalDateTime ci_created_at;
