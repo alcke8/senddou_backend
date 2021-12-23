@@ -29,7 +29,7 @@ public class UserResumeRepository {
     }
 
     public List<User> findByName(String name){
-        return em.createQuery("select u from User u where u.us_nickname :name", User.class)
+        return em.createQuery("select u from User u where u.us_nickname =:name", User.class)
                 .setParameter("name", name)
                 .getResultList();
     }
