@@ -23,4 +23,9 @@ public class ContentIntroduce {
 
     private LocalDateTime ci_created_at;
     private Timestamp ci_updated_at;
+
+    @Column(name = "contentType")
+    @Enumerated(EnumType.STRING)
+    private ContentType contentType;
+
 }
