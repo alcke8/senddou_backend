@@ -1,6 +1,7 @@
 package com.deeplify.tutorial.oauthlogin.table.repository;
 
 import com.deeplify.tutorial.oauthlogin.table.domain.user.User;
+import com.deeplify.tutorial.oauthlogin.table.web.dto.UserSaveRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
@@ -14,8 +15,8 @@ public class UserResumeRepository {
 
     private final EntityManager em;
 
-    public void save(User userResume){
-        em.persist(userResume);
+    public void save(UserSaveRequestDto userSaveRequestDto){
+        em.persist(userSaveRequestDto);
     }
 
     public User findUser(Long id){
@@ -28,7 +29,7 @@ public class UserResumeRepository {
     }
 
     public List<User> findByName(String name){
-        return em.createQuery("select u from User u where u.us_name= :name", User.class)
+        return em.createQuery("select u from User u where u.us_nickname :name", User.class)
                 .setParameter("name", name)
                 .getResultList();
     }
