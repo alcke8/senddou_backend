@@ -18,6 +18,8 @@ public class Resume extends BaseTimeEntity {
     @Column(name = "re_id")
     private Long re_id;
 
+
+
     @JoinColumn(name = "rp_id")
     @OneToOne
     private ResumeComponent resumeComponent;
