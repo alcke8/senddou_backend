@@ -10,7 +10,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-public class ResumeController {
+public class ResumeAPiController {
 
     private final ResumeService resumeService;
 

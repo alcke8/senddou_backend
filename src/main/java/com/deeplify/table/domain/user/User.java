@@ -29,7 +29,7 @@ public class User extends BaseTimeEntity {
     private String us_nickname;
 
     private String us_password;
-    private String us_email;
+    private String usEmail;
 
     @Enumerated(EnumType.STRING)
     private UserType us_role;
@@ -40,7 +40,7 @@ public class User extends BaseTimeEntity {
     public User(String nickname, String password, String email, UserType role, String thumbnail) {
         this.us_nickname = nickname;
         this.us_password = password;
-        this.us_email = email;
+        this.usEmail = email;
         this.us_role = role;
         this.us_thumbnail = thumbnail;
     }

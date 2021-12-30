@@ -22,6 +22,7 @@ public class UserService {
         return userRepository.save(requestDto.toEntity()).getUs_id();
     }
 
+
     @Transactional
     public Long update(Long id, UserDto.UpdateRequest requestDto){
         User user = userRepository.findById(id)
@@ -33,6 +34,15 @@ public class UserService {
     public UserDto.Response findById(Long id) {
         User entity = userRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("해당 유저가 없습니다. id = " + id));
+
+        return new UserDto.Response(entity);
+    }
+
+    public UserDto.Response findByEmail(String email) {
+        User entity = userRepository.findByUsEmail(email)
+                .orElseGet(()->{
+                    return new User();
+                });
 
         return new UserDto.Response(entity);
     }

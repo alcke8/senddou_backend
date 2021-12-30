@@ -24,3 +24,6 @@ logging:
          apache:
            coyote:
              http11: debug
+
+cos:
+  key: cos1234
