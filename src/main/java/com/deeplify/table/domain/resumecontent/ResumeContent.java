@@ -3,7 +3,6 @@ package com.deeplify.table.domain.resumecontent;
 import com.deeplify.table.domain.BaseTimeEntity;
 import com.deeplify.table.domain.contenttype.ContentIntroduce;
 import com.deeplify.table.domain.user.User;
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Builder;
 import lombok.Getter;

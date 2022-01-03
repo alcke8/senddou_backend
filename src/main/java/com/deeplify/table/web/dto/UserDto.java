@@ -22,7 +22,7 @@ public class UserDto {
             this.id = user.getUs_id();
             this.nickname = user.getUs_nickname();
             this.password = user.getUs_password();
-            this.email = user.getUs_email();
+            this.email = user.getUsEmail();
             this.thumbnail = user.getUs_thumbnail();
             this.role = user.getUs_role();
         }
