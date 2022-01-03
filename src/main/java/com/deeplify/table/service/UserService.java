@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 
@@ -63,6 +64,20 @@ public class UserService {
                 .orElseThrow(() -> new IllegalArgumentException("해당 유저가 없습니다. id= " + id));
 
         userRepository.delete(user);
+    }
+
+    @Transactional
+    public String join(User user){
+        validateDuplicateUsEmail(user); //중복 체크
+        userRepository.save(user);
+        return user.getUsEmail();
+    }
+
+    private void validateDuplicateUsEmail(User user){
+        Optional<User> findUsers = userRepository.findByUsEmail(user.getUsEmail());
+        if (!findUsers.isEmpty()){
+            throw new IllegalStateException("이미 존재하는 회원입니다");
+        }
     }
 
 }

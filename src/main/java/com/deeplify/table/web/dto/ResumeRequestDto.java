@@ -1,6 +1,6 @@
-package com.deeplify.tutorial.oauthlogin.table.web.dto;
+package com.deeplify.table.web.dto;
 
-import com.deeplify.tutorial.oauthlogin.table.domain.resume.Resume;
+import com.deeplify.table.domain.resume.Resume;
 import lombok.Getter;
 import lombok.Setter;
 
