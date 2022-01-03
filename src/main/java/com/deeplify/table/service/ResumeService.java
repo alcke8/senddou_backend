@@ -14,7 +14,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ResumeService {
 
-   private final ResumeRepository resumeRepository;
+    private final ResumeRepository resumeRepository;
 
     @Transactional
     public Long save(ResumeDto.SaveRequest requestDto){
