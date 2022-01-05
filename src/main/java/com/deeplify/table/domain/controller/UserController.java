@@ -14,11 +14,18 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
 @Controller
 @RequiredArgsConstructor
@@ -31,7 +38,7 @@ public class UserController {
 
     @GetMapping("/auth/kakao/callback")
     @ResponseBody
-    public String KakaoCallback(String code) {
+    public String KakaoCallback(String code, Model model) {
         /**
          * post방식 key value
          */
@@ -132,6 +139,7 @@ public class UserController {
                                         .email(kakaoProfile.getKakao_account().getEmail())
                                                 .thumbnail(kakaoProfile.getKakao_account().getProfile().getThumbnail_image_url())
                                                         .role(UserType.USER)
+                .accessToken(oauthToken.getAccess_token())
                                                                 .build();
 
 
@@ -145,8 +153,36 @@ public class UserController {
             userService.save(kakaoUser);
         }
 
+        model.addAttribute("profile",kakaoProfile);
 
-        return "회원가입 완료"; //redirect"/"
+        return "가입완료";  //"redirect:/&profile="+kakaoProfile;
+    }
+
+    @GetMapping
+    public void kakaoLogout(String access_Token) {
+        String reqURL = "https://kapi.kakao.com/v1/user/logout";
+        try {
+            URL url = new URL(reqURL);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Authorization", "Bearer " + access_Token);
+
+            int responseCode = conn.getResponseCode();
+            System.out.println("responseCode : " + responseCode);
+
+            BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+
+            String result = "";
+            String line = "";
+
+            while ((line = br.readLine()) != null) {
+                result += line;
+            }
+            System.out.println(result);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
 }

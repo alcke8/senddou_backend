@@ -17,6 +17,7 @@ public class UserDto {
         private String email;
         private String thumbnail;
         private UserType role;
+        private String accessToken;
 
         public Response(User user) {
             this.id = user.getUs_id();
@@ -25,6 +26,7 @@ public class UserDto {
             this.email = user.getUsEmail();
             this.thumbnail = user.getUs_thumbnail();
             this.role = user.getUs_role();
+            this.accessToken = user.getAccessToken();
         }
     }
 
@@ -36,14 +38,16 @@ public class UserDto {
         private String email;
         private String thumbnail;
         private UserType role;
+        private String accessToken;
 
         @Builder
-        public SaveRequest(String nickname, String password, String email, String thumbnail, UserType role) {
+        public SaveRequest(String nickname, String password, String email, String thumbnail, UserType role,String accessToken) {
             this.nickname = nickname;
             this.password = password;
             this.email = email;
             this.thumbnail = thumbnail;
             this.role = role;
+            this.accessToken = accessToken;
         }
 
 
@@ -54,6 +58,7 @@ public class UserDto {
                     .email(email)
                     .thumbnail(thumbnail)
                     .role(UserType.USER)
+                    .accessToken(accessToken)
                     .build();
         }
     }

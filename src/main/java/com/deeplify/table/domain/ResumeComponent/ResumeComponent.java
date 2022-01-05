@@ -2,6 +2,8 @@ package com.deeplify.table.domain.ResumeComponent;
 
 import com.deeplify.table.domain.BaseTimeEntity;
 import com.deeplify.table.domain.resume.Resume;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,6 +13,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 @Getter
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
 public class ResumeComponent extends BaseTimeEntity {
 
     @Id

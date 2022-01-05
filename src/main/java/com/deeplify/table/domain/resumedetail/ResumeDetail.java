@@ -19,7 +19,7 @@ public class ResumeDetail extends BaseTimeEntity {
     private Long rd_id;
 
 
-    @OneToOne(mappedBy = "resumeDetail",fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "resumeDetail",fetch = FetchType.EAGER)
     private ContentIntroduce contentIntroduce;
 
     private String rd_title;
