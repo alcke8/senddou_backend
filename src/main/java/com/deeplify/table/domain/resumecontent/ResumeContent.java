@@ -3,7 +3,9 @@ package com.deeplify.table.domain.resumecontent;
 import com.deeplify.table.domain.BaseTimeEntity;
 import com.deeplify.table.domain.contenttype.ContentIntroduce;
 import com.deeplify.table.domain.user.User;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,6 +17,7 @@ import javax.persistence.*;
 @Setter
 @Getter
 @NoArgsConstructor
+@JsonIdentityInfo(generator = ObjectIdGenerators.IntSequenceGenerator.class)
 public class ResumeContent extends BaseTimeEntity {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -22,12 +25,12 @@ public class ResumeContent extends BaseTimeEntity {
     private Long rc_id;
 
     @JoinColumn(name = "ci_id")
-    @OneToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    @OneToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private ContentIntroduce contentIntroduce;
 
     @JsonIgnore
     @JoinColumn(name = "us_id")
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private User user;
 
     private String rc_company;
